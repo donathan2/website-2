@@ -61,7 +61,7 @@ export default function Projects() {
           </p>
         </div>
       </motion.div>
-      {opened && <Window></Window>}
+      {opened && <Window setOpened={setOpened}></Window>}
     </motion.div>
   );
 }

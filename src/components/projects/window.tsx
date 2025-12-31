@@ -1,27 +1,44 @@
-export default function Window() {
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Letters from "./letters";
+import { useState } from "react";
+import Unselected from "./boards/unselected";
+import Selections from "./selections";
+import Bitbridge from "./boards/bitbridge";
+
+export default function Window({
+  setOpened,
+}: {
+  setOpened: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const [project, setProject] = useState<number>(0);
+
   return (
     <>
-      <div className="fixed z-50 inset-0 bg-gray-800/25"></div>
       <div
-        className="absolute z-52 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[55vw] max-h-[75vh] h-auto bg-gradient-to-br bg-local from-lime-200 to-green-500 overflow-y-auto p-4 rounded shadow-lg scrollbar-none"
+        className="fixed z-50 inset-0 bg-gray-800/50"
+        onClick={() => setOpened(false)}
+      ></div>
+      <motion.div
+        className="absolute z-52 left-1/2 top-1/2 -translate-x-6/4 -translate-y-1/2 w-[30vw] h-[80vh]  scrollbar-none"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ type: "spring" }}
       >
-        <style>{`
-          .scrollbar-none::-webkit-scrollbar { display: none; }
-        `}</style>
-        <div className="mb-2 font-bold text-lg">Projects</div>
-        <div className="space-y-4">
-          {/* Example scrollable content */}
-          <div className="h-20 bg-yellow-300 rounded p-2">Project 1</div>
-          <div className="h-20 bg-yellow-300 rounded p-2">Project 2</div>
-          <div className="h-20 bg-yellow-300 rounded p-2">Project 3</div>
-          <div className="h-20 bg-yellow-300 rounded p-2">Project 4</div>
-          <div className="h-20 bg-yellow-300 rounded p-2">Project 5</div>
-          <div className="h-20 bg-yellow-300 rounded p-2">Project 6</div>
-          <div className="h-20 bg-yellow-300 rounded p-2">Project 7</div>
-          <div className="h-20 bg-yellow-300 rounded p-2">Project 8</div>
-        </div>
+        <Image
+          className="absolute"
+          src="/display/projects-display.png"
+          alt="projects display"
+          fill
+        ></Image>
+        <Selections project={project} setProject={setProject}></Selections>
+      </motion.div>
+      <div className="w-[10vw] h-[5vw] absolute z-52 fixed pointer-events-none">
+        <Letters />
       </div>
+      {project === 0 && <Unselected></Unselected>}
+      {project === 1 && <Bitbridge></Bitbridge>}
     </>
   );
 }
