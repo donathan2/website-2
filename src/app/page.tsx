@@ -23,7 +23,7 @@ export default function Home() {
             framesCount={SUNRISE_FRAMES.length}
           />
         </div>
-        <div className="absolute z-30 w-[25vw] h-full">
+        <div className="absolute z-30 w-[23vw] h-full">
           <Projects></Projects>
         </div>
       </div>

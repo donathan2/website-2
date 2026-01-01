@@ -14,20 +14,51 @@ interface SelectionsProps {
 
 export default function Selections({ project, setProject }: SelectionsProps) {
   return (
-    <div
-      className="w-[50%] h-[10%] bg-sky-900 translate-x-[7.5vw] translate-y-[8vw] border-[0.3vw] border-white flex items-center gap-4"
-      onClick={() => {
-        if (project === 1) {
-          setProject(0);
-        } else {
-          setProject(1);
-        }
-      }}
-    >
-      <div className="translate-x-[10%] relative w-[3vw] h-[3vw]">
-        <Image src="/icons/bitbridge.png" alt="bitbridge icon" fill></Image>
+    <>
+      <div
+        className={`w-[50%] h-[10%] select-none ${
+          project === 1 ? "bg-sky-600" : "bg-sky-900"
+        } translate-x-[7.5vw] translate-y-[8vw] border-[0.3vw] ${
+          project === 1 ? "border-cyan-200" : "border-white"
+        } flex items-center gap-4 transition-all duration-300 ${
+          project === 1 ? "scale-110 z-50" : ""
+        }`}
+        onClick={() => {
+          if (project === 1) {
+            setProject(0);
+          } else {
+            setProject(1);
+          }
+        }}
+      >
+        <div className="translate-x-[10%] relative w-[3vw] h-[3vw]">
+          <Image src="/icons/bitbridge.png" alt="bitbridge icon" fill></Image>
+        </div>
+        <p className={`${font.className} text-[2vw]`}>BitBridge</p>
       </div>
-      <p className={`${font.className} text-[2vw]`}>BitBridge</p>
-    </div>
+
+      {/* CAMELDEW */}
+      <div
+        className={`mt-[1%] w-[50%] h-[10%] select-none ${
+          project === 2 ? "bg-lime-400" : "bg-lime-600"
+        } translate-x-[7.5vw] translate-y-[8vw] border-[0.3vw] ${
+          project === 2 ? "border-lime-200" : "border-white"
+        } flex items-center gap-4 transition-all duration-300 ${
+          project === 2 ? "scale-110 z-50" : ""
+        }`}
+        onClick={() => {
+          if (project === 2) {
+            setProject(0);
+          } else {
+            setProject(2);
+          }
+        }}
+      >
+        <div className="translate-x-[10%] relative w-[3vw] h-[3vw]">
+          <Image src="/icons/cameldew.png" alt="bitbridge icon" fill></Image>
+        </div>
+        <p className={`${font.className} text-[1.4vw]`}>Cameldew Valley</p>
+      </div>
+    </>
   );
 }

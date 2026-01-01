@@ -5,6 +5,7 @@ import { useState } from "react";
 import Unselected from "./boards/unselected";
 import Selections from "./selections";
 import Bitbridge from "./boards/bitbridge";
+import Cameldew from "./boards/cameldew";
 
 export default function Window({
   setOpened,
@@ -16,7 +17,13 @@ export default function Window({
   return (
     <>
       <div
-        className="fixed z-50 inset-0 bg-gray-800/50"
+        className={`fixed z-50 inset-0 ${
+          project === 1
+            ? "bg-cyan-800/50"
+            : project === 2
+            ? "bg-green-800/50"
+            : "bg-gray-800/50"
+        }`}
         onClick={() => setOpened(false)}
       ></div>
       <motion.div
@@ -39,6 +46,7 @@ export default function Window({
       </div>
       {project === 0 && <Unselected></Unselected>}
       {project === 1 && <Bitbridge></Bitbridge>}
+      {project === 2 && <Cameldew></Cameldew>}
     </>
   );
 }

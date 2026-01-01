@@ -41,7 +41,7 @@ export default function Projects() {
         }}
         whileHover={{ scale: 1.1, rotateX: 35 }}
       >
-        <div className="w-[32vw] h-[16vw] relative">
+        <div className="w-[28vw] h-[14vw] relative">
           <video
             ref={videoRef}
             src={
@@ -56,7 +56,7 @@ export default function Projects() {
             className="absolute top-0 left-0 w-full h-full object-cover rounded"
             draggable={false}
           />
-          <p className="absolute w-full left-0 text-center translate-y-[7vw] [text-shadow:3px_3px_1px_rgba(0,0,0,0.6)] z-10 pointer-events-none">
+          <p className="absolute w-full left-0 text-center translate-y-[5.5vw] [text-shadow:3px_3px_1px_rgba(0,0,0,0.6)] z-10 pointer-events-none">
             PROJECTS
           </p>
         </div>
